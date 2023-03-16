@@ -193,7 +193,16 @@ Matthew</string>
                         <viewLayoutGuide key="safeArea" id="j4F-4Q-hda"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="E8T-zo-zNH"/>
+                    <navigationItem key="navigationItem" id="E8T-zo-zNH">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="etc-1k-bCA">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="lhI-Ph-uQW">
+                                <rect key="frame" x="-37" y="-17" width="83" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save as Favorite"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="DisplayFavorite" destination="iKb-hX-Svi" id="9La-BO-Mmk"/>
                     </connections>
