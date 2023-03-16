@@ -6,22 +6,36 @@
 //
 
 import UIKit
+import CoreData
+
+var favoritesList = [Favorite]()
 
 class FavoritesPageTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    let data = ["stove", "oven", "fridge", "sink", "countertop", "utensils", "cookware", "dishware", "cutlery", "spices", "microwave", "toaster", "blender", "coffee maker", "teapot", "pot", "pan", "grill", "food processor", "mixer", "chopper", "pressure cooker", "slow cooker", "air fryer", "deep fryer", "rice cooker", "bakeware", "serving dishes", "platters", "casserole dishes", "pie dish", "muffin tin", "loaf pan", "cookie sheet", "pizza stone", "cutting board", "measuring cups", "measuring spoons", "can opener", "peeler", "grater", "strainer", "whisk", "spatula", "tongs", "ladle", "fork", "knife", "spoon", "rolling pin", "cooling rack", "dish towel", "pot holders", "apron", "oven mitts", "kitchen timer", "scale"]
    
     
-    var filteredData: [String]!
+    var filteredData: [Favorite]!
+    
+    func nonDeletedFavorites() -> [Favorite]
+    {
+        var noDeleteFavoritesList = [Favorite]()
+        for favorite in filteredData
+        {
+            if (favorite.deletedDate == nil)
+            {
+                noDeleteFavoritesList.append(favorite)
+            }
+        }
+        return noDeleteFavoritesList
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
             
         searchBar.delegate = self
         
-        filteredData = data
+        filteredData = favoritesList
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,14 +55,14 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return filteredData.count
+        return nonDeletedFavorites().count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
 
-        cell.textLabel?.text = filteredData[indexPath.row]
+        cell.textLabel?.text = nonDeletedFavorites()[indexPath.row]
         
         return cell
     }
@@ -105,10 +119,10 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
         filteredData = [];
         
         if searchText == "" {
-            filteredData = data;
+            filteredData = favoritesList;
         } else {
-            for favorite in data {
-                if favorite.lowercased().contains(searchText.lowercased()) {
+            for favorite in favoritesList {
+                if favorite.text.lowercased().contains(searchText.lowercased()) {
                     filteredData.append(favorite)
                 }
             }
