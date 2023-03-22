@@ -11,9 +11,9 @@ import CoreData
 var favoritesList = [Favorite]()
 
 class FavoritesPageTableViewController: UITableViewController, UISearchBarDelegate {
+    var firstLoad = true
     
     @IBOutlet weak var searchBar: UISearchBar!
-   
     
     var filteredData: [Favorite]!
     
@@ -31,7 +31,25 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        if (firstLoad)
+        {
+            firstLoad = false
+            let appDelegate =  UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            do {
+                let results:NSArray = try context.fetch(request) as NSArray
+                for result in results
+                {
+                    let favorite = result as! Favorite
+                    favoritesList.append(favorite)
+                }
+            }
+            catch
+            {
+                print("Fetch Failed")
+            }
+        }
             
         searchBar.delegate = self
         
@@ -46,7 +64,7 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
     // MARK: - Table view data source
 
     @IBOutlet weak var didClickFavorite: UITableViewCell!
-    
+     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

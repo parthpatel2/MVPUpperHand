@@ -183,7 +183,7 @@ Matthew</string>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                             </button>
                             <connections>
-                                <segue destination="7th-LG-onm" kind="show" id="It2-lG-iqy"/>
+                                <segue destination="7th-LG-onm" kind="show" id="ZhM-IF-ufq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
