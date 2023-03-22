@@ -19,6 +19,8 @@
 		51573D662990555800949663 /* TypePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51573D652990555800949663 /* TypePageViewController.swift */; };
 		81809DEF29C2968D00A3C692 /* Favorites.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81809DED29C2968C00A3C692 /* Favorites.xcdatamodeld */; };
 		81809DF129C2991D00A3C692 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81809DF029C2991D00A3C692 /* Favorite.swift */; };
+		8182467F29C7988800C3B82C /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182467E29C7988800C3B82C /* FavoriteCell.swift */; };
+		8182468129C7A37300C3B82C /* NewFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182468029C7A37300C3B82C /* NewFavorite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		51573D652990555800949663 /* TypePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePageViewController.swift; sourceTree = "<group>"; };
 		81809DEE29C2968C00A3C692 /* Favorites.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorites.xcdatamodel; sourceTree = "<group>"; };
 		81809DF029C2991D00A3C692 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		8182467E29C7988800C3B82C /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		8182468029C7A37300C3B82C /* NewFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavorite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 		5125F8AD298B42E60088FC21 /* upperHandMVP */ = {
 			isa = PBXGroup;
 			children = (
+				8182467E29C7988800C3B82C /* FavoriteCell.swift */,
 				5125F8AE298B42E60088FC21 /* AppDelegate.swift */,
 				5125F8B0298B42E60088FC21 /* SceneDelegate.swift */,
 				81809DF029C2991D00A3C692 /* Favorite.swift */,
@@ -78,6 +83,7 @@
 				51573D652990555800949663 /* TypePageViewController.swift */,
 				5125F8C8298B45E70088FC21 /* FavoritesPage.storyboard */,
 				5125F8C4298B43E90088FC21 /* MainPageViewController.swift */,
+				8182468029C7A37300C3B82C /* NewFavorite.swift */,
 				5125F8C6298B45C70088FC21 /* FavoritesPageTableViewController.swift */,
 				5125F8BC298B42E80088FC21 /* Info.plist */,
 				81809DED29C2968C00A3C692 /* Favorites.xcdatamodeld */,
@@ -157,12 +163,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8182468129C7A37300C3B82C /* NewFavorite.swift in Sources */,
 				5125F8C5298B43E90088FC21 /* MainPageViewController.swift in Sources */,
 				81809DF129C2991D00A3C692 /* Favorite.swift in Sources */,
 				5125F8C7298B45C70088FC21 /* FavoritesPageTableViewController.swift in Sources */,
 				5125F8B3298B42E60088FC21 /* ViewController.swift in Sources */,
 				81809DEF29C2968D00A3C692 /* Favorites.xcdatamodeld in Sources */,
 				5125F8AF298B42E60088FC21 /* AppDelegate.swift in Sources */,
+				8182467F29C7988800C3B82C /* FavoriteCell.swift in Sources */,
 				5125F8B1298B42E60088FC21 /* SceneDelegate.swift in Sources */,
 				51573D662990555800949663 /* TypePageViewController.swift in Sources */,
 			);

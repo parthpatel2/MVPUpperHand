@@ -145,14 +145,25 @@ Matthew</string>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="i0t-mh-25r">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoritecellID" id="i0t-mh-25r" customClass="FavoriteCell" customModule="upperHandMVP" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i0t-mh-25r" id="H9B-Jg-cU3">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTd-2q-Yfo">
+                                            <rect key="frame" x="20" y="11" width="32" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="favoritesLabel" destination="mTd-2q-Yfo" id="P9C-4a-Z0A"/>
+                                    <outlet property="textLabel" destination="mTd-2q-Yfo" id="clj-dp-LCA"/>
                                     <segue destination="Pat-Nj-pyp" kind="show" id="i1t-IZ-qz8"/>
                                 </connections>
                             </tableViewCell>
@@ -164,6 +175,17 @@ Matthew</string>
                     </tableView>
                     <navigationItem key="navigationItem" id="Bjs-kN-Bl3">
                         <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="VQp-9W-OGV">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sZV-yl-gS1">
+                                <rect key="frame" x="276" y="5" width="83" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                            </button>
+                            <connections>
+                                <segue destination="7th-LG-onm" kind="show" id="It2-lG-iqy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="8XZ-HM-ngM" id="9Eo-qn-80B"/>
@@ -172,6 +194,54 @@ Matthew</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgR-5q-nwu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1882" y="428"/>
+        </scene>
+        <!--New Favorite View Controller-->
+        <scene sceneID="z7p-wQ-qWl">
+            <objects>
+                <viewController id="7th-LG-onm" customClass="NewFavoriteViewController" customModule="upperHandMVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BpV-AY-zS8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eBk-K9-cBR">
+                                <rect key="frame" x="67" y="287" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Favorite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stg-uF-jFJ">
+                                <rect key="frame" x="92" y="193" width="190" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0w4-Xv-wzt"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cvD-jf-wiX">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="NA4-lF-NFy">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="O4Y-Ov-sgN">
+                                <rect key="frame" x="276" y="5" width="83" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveAction:" destination="7th-LG-onm" eventType="touchUpInside" id="FAp-ty-Dby"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="favoritesText" destination="eBk-K9-cBR" id="4PV-RH-IdU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ki7-Ul-9FP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2708" y="441"/>
         </scene>
         <!--Type Page View Controller-->
         <scene sceneID="pFi-pc-cLi">
@@ -193,19 +263,7 @@ Matthew</string>
                         <viewLayoutGuide key="safeArea" id="j4F-4Q-hda"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="E8T-zo-zNH">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="etc-1k-bCA">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="lhI-Ph-uQW">
-                                <rect key="frame" x="212" y="5" width="147" height="34.333333333333336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save as Favorite"/>
-                            </button>
-                            <connections>
-                                <action selector="saveAction:" destination="Pat-Nj-pyp" id="4d7-An-XN2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="E8T-zo-zNH"/>
                     <connections>
                         <outlet property="DisplayFavorite" destination="iKb-hX-Svi" id="9La-BO-Mmk"/>
                     </connections>
@@ -240,10 +298,11 @@ Matthew</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="J9M-KZ-gms"/>
+        <segue reference="i1t-IZ-qz8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark" catalog="system" width="110" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="text.bubble" catalog="system" width="128" height="110"/>
         <image name="tray.full" catalog="system" width="128" height="88"/>
         <systemColor name="labelColor">
@@ -251,6 +310,9 @@ Matthew</string>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

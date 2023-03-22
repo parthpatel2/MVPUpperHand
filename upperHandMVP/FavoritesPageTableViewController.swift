@@ -60,11 +60,15 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let favoriteCell = tableView.dequeueReusableCell(withIdentifier: "favoritecellID")! as! FavoriteCell
 
-        cell.textLabel?.text = nonDeletedFavorites()[indexPath.row]
         
-        return cell
+        let thisFavorite: Favorite!
+        thisFavorite = nonDeletedFavorites()[indexPath.row]
+        
+        favoriteCell.favoritesLabel.text = thisFavorite.text;
+        
+        return favoriteCell
     }
     
     /*
