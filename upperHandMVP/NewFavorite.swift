@@ -6,12 +6,18 @@ class NewFavoriteViewController: UIViewController
     @IBOutlet weak var favoritesText: UITextView!
     
     
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+    }
+
+    
     @IBAction func saveAction(_ sender: Any) {
         let appDelegate =  UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Note", in: context)
-        let newFavorite = Favorite(entity: entity!, insertInto: context)
-        newFavorite.id = favoritesList.count as NSNumber
+        let entity = NSEntityDescription.entity(forEntityName: "Single_Favorite", in: context)
+        let newFavorite = Single_Favorite(entity: entity!, insertInto: context)
+        newFavorite.id = Int32(favoritesList.count)
         newFavorite.text = favoritesText.text
         do
         {

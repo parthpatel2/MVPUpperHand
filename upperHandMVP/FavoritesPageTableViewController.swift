@@ -8,18 +8,19 @@
 import UIKit
 import CoreData
 
-var favoritesList = [Favorite]()
+var favoritesList = [Single_Favorite]()
 
 class FavoritesPageTableViewController: UITableViewController, UISearchBarDelegate {
+    
     var firstLoad = true
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var filteredData: [Favorite]!
+    var filteredData: [Single_Favorite]!
     
-    func nonDeletedFavorites() -> [Favorite]
+    func nonDeletedFavorites() -> [Single_Favorite]
     {
-        var noDeleteFavoritesList = [Favorite]()
+        var noDeleteFavoritesList = [Single_Favorite]()
         for favorite in filteredData
         {
             if (favorite.deletedDate == nil)
@@ -36,12 +37,12 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
             firstLoad = false
             let appDelegate =  UIApplication.shared.delegate as! AppDelegate
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Single_Favorite")
             do {
                 let results:NSArray = try context.fetch(request) as NSArray
                 for result in results
                 {
-                    let favorite = result as! Favorite
+                    let favorite = result as! Single_Favorite
                     favoritesList.append(favorite)
                 }
             }
@@ -81,13 +82,20 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
         let favoriteCell = tableView.dequeueReusableCell(withIdentifier: "favoritecellID")! as! FavoriteCell
 
         
-        let thisFavorite: Favorite!
+        let thisFavorite: Single_Favorite!
         thisFavorite = nonDeletedFavorites()[indexPath.row]
         
         favoriteCell.favoritesLabel.text = thisFavorite.text;
         
         return favoriteCell
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    
     
     /*
     // Override to support conditional editing of the table view.
@@ -144,7 +152,7 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
             filteredData = favoritesList;
         } else {
             for favorite in favoritesList {
-                if favorite.text.lowercased().contains(searchText.lowercased()) {
+                if ((favorite.text?.lowercased().contains(searchText.lowercased())) != nil) {
                     filteredData.append(favorite)
                 }
             }
