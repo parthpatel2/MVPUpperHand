@@ -14,6 +14,8 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
     
     var firstLoad = true
     
+    var selectedIP: IndexPath?
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var filteredData: [Single_Favorite]!
@@ -96,14 +98,23 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
         tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "editFavorite", sender: self)
+    @IBAction func editButton(_ sender: UIButton!) {
+        var superview = sender.superview
+            while let view = superview, !(view is UITableViewCell) {
+                superview = view.superview
+            }
+            guard let cell = superview as? UITableViewCell else {
+                print("button is not contained in a table view cell")
+                return
+            }
+            selectedIP = tableView.indexPath(for: cell)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "editFavorite")
         {
-            let indexPath = tableView.indexPathForSelectedRow
+            let indexPath = selectedIP
             
             let favoriteDetail = segue.destination as? NewFavoriteViewController
             
