@@ -103,15 +103,15 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "editFavorite")
         {
-            let indexPath = tableView.indexPathForSelectedRow!
+            let indexPath = tableView.indexPathForSelectedRow
             
             let favoriteDetail = segue.destination as? NewFavoriteViewController
             
             let selectedFavorite : Single_Favorite!
-            selectedFavorite = nonDeletedFavorites()[indexPath.row]
+            selectedFavorite = nonDeletedFavorites()[indexPath!.row]
             favoriteDetail?.selectedFavorite = selectedFavorite
             
-            tableView.deselectRow(at: indexPath, animated: true)
+            tableView.deselectRow(at: indexPath!, animated: true)
         }
     }
     
@@ -169,9 +169,9 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
         filteredData = [];
         
         if searchText == "" {
-            filteredData = favoritesList;
+            filteredData = nonDeletedFavorites();
         } else {
-            for favorite in favoritesList {
+            for favorite in nonDeletedFavorites() {
                 if (favorite.text!.lowercased().contains(searchText.lowercased())) {
                     filteredData.append(favorite)
                 }

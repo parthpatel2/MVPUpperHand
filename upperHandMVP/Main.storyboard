@@ -164,6 +164,9 @@ Matthew</string>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="square.and.pencil" catalog="system"/>
+                                            <connections>
+                                                <segue destination="7th-LG-onm" kind="show" identifier="editFavorite" id="mrF-n6-CLr"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -224,6 +227,18 @@ Matthew</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ok-8R-qqN">
+                                <rect key="frame" x="111" y="571" width="153" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="45"/>
+                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="deletedFavorite:" destination="7th-LG-onm" eventType="touchUpInside" id="7Er-1h-A1p"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0w4-Xv-wzt"/>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
@@ -247,7 +262,7 @@ Matthew</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ki7-Ul-9FP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2708" y="441"/>
+            <point key="canvasLocation" x="2708" y="440.39408866995075"/>
         </scene>
         <!--Type Page View Controller-->
         <scene sceneID="pFi-pc-cLi">
@@ -305,6 +320,7 @@ Matthew</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="i1t-IZ-qz8"/>
+        <segue reference="mrF-n6-CLr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark" catalog="system" width="110" height="128"/>
@@ -320,6 +336,9 @@ Matthew</string>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
