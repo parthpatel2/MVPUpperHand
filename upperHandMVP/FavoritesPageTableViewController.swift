@@ -34,6 +34,7 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
     override func viewDidLoad() {
         if (firstLoad)
         {
+            favoritesList = []
             firstLoad = false
             let appDelegate =  UIApplication.shared.delegate as! AppDelegate
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
@@ -95,6 +96,25 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
         tableView.reloadData()
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "editFavorite", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "editFavorite")
+        {
+            let indexPath = tableView.indexPathForSelectedRow!
+            
+            let favoriteDetail = segue.destination as? NewFavoriteViewController
+            
+            let selectedFavorite : Single_Favorite!
+            selectedFavorite = nonDeletedFavorites()[indexPath.row]
+            favoriteDetail?.selectedFavorite = selectedFavorite
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
     
     
     /*
@@ -152,7 +172,7 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
             filteredData = favoritesList;
         } else {
             for favorite in favoritesList {
-                if ((favorite.text?.lowercased().contains(searchText.lowercased())) != nil) {
+                if (favorite.text!.lowercased().contains(searchText.lowercased())) {
                     filteredData.append(favorite)
                 }
             }

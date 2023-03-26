@@ -5,10 +5,16 @@ class NewFavoriteViewController: UIViewController
 {
     @IBOutlet weak var favoritesText: UITextView!
     
+    var selectedFavorite: Single_Favorite? = nil
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        if(selectedFavorite != nil)
+        {
+            favoritesText.text = selectedFavorite?.text
+        }
     }
 
     
