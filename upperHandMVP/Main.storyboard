@@ -174,7 +174,7 @@ Matthew</string>
                                 <connections>
                                     <outlet property="favoritesLabel" destination="mTd-2q-Yfo" id="P9C-4a-Z0A"/>
                                     <outlet property="textLabel" destination="mTd-2q-Yfo" id="clj-dp-LCA"/>
-                                    <segue destination="Pat-Nj-pyp" kind="show" id="i1t-IZ-qz8"/>
+                                    <segue destination="Pat-Nj-pyp" kind="show" identifier="useFavorite" id="RVB-zB-ssE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -203,7 +203,7 @@ Matthew</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgR-5q-nwu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="428"/>
+            <point key="canvasLocation" x="1880.8" y="427.83251231527095"/>
         </scene>
         <!--New Favorite View Controller-->
         <scene sceneID="z7p-wQ-qWl">
@@ -268,7 +268,7 @@ Matthew</string>
         <!--Type Page View Controller-->
         <scene sceneID="pFi-pc-cLi">
             <objects>
-                <viewController id="Pat-Nj-pyp" customClass="TypePageViewController" customModule="upperHandMVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TypePageViewController" id="Pat-Nj-pyp" customClass="TypePageViewController" customModule="upperHandMVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xKa-Xf-PS3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,7 +320,7 @@ Matthew</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="i1t-IZ-qz8"/>
+        <segue reference="RVB-zB-ssE"/>
         <segue reference="mrF-n6-CLr"/>
     </inferredMetricsTieBreakers>
     <resources>

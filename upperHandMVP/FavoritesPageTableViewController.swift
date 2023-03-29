@@ -16,6 +16,8 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
     
     var selectedIP: IndexPath?
     
+    var clicked = false
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var filteredData: [Single_Favorite]!
@@ -67,13 +69,6 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
 
     // MARK: - Table view data source
 
-    @IBOutlet weak var didClickFavorite: UITableViewCell!
-     
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -109,23 +104,31 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
             }
             selectedIP = tableView.indexPath(for: cell)
     }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "useFavorite")
+        {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let favoriteDetail = segue.destination as? TypePageViewController
+            
+            let selectedFavorite : Single_Favorite!
+            selectedFavorite = nonDeletedFavorites()[indexPath.row]
+            favoriteDetail?.favoriteContent = selectedFavorite.text!
+            
+            //tableView.deselectRow(at: indexPath, animated: true)
+        }
         if (segue.identifier == "editFavorite")
         {
             let indexPath = selectedIP
-            
             let favoriteDetail = segue.destination as? NewFavoriteViewController
             
             let selectedFavorite : Single_Favorite!
             selectedFavorite = nonDeletedFavorites()[indexPath!.row]
             favoriteDetail?.selectedFavorite = selectedFavorite
             
-            tableView.deselectRow(at: indexPath!, animated: true)
+            //tableView.deselectRow(at: indexPath!, animated: true)
         }
     }
-    
     
     
     /*

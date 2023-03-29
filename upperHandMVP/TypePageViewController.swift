@@ -17,7 +17,7 @@ class TypePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        DisplayFavorite.text = favoriteContent
+        DisplayFavorite.text = favoriteContent
         // Do any additional setup after loading the view.
     }
     
