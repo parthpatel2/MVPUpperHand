@@ -11,13 +11,8 @@ import CoreData
 var favoritesList = [Single_Favorite]()
 
 class FavoritesPageTableViewController: UITableViewController, UISearchBarDelegate {
-    
-    var firstLoad = true
-    
+
     var selectedIP: IndexPath?
-    
-    var clicked = false
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var filteredData: [Single_Favorite]!
@@ -36,26 +31,22 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
     }
     
     override func viewDidLoad() {
-        if (firstLoad)
-        {
-            favoritesList = []
-            firstLoad = false
-            let appDelegate =  UIApplication.shared.delegate as! AppDelegate
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Single_Favorite")
-            do {
-                let results:NSArray = try context.fetch(request) as NSArray
-                for result in results
-                {
-                    let favorite = result as! Single_Favorite
-                    favoritesList.append(favorite)
-                }
-            }
-            catch
+        favoritesList = []
+        let appDelegate =  UIApplication.shared.delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Single_Favorite")
+        do {
+            let results:NSArray = try context.fetch(request) as NSArray
+            for result in results
             {
-                print("Fetch Failed")
+                let favorite = result as! Single_Favorite
+                favoritesList.append(favorite)
             }
         }
+        catch
+        {
+            print("Fetch Failed")
+            }
             
         searchBar.delegate = self
         
@@ -89,7 +80,27 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        favoritesList = []
+        let appDelegate =  UIApplication.shared.delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Single_Favorite")
+        do {
+            let results:NSArray = try context.fetch(request) as NSArray
+            for result in results
+            {
+                let favorite = result as! Single_Favorite
+                favoritesList.append(favorite)
+            }
+        }
+        catch
+        {
+            print("Fetch Failed")
+            }
+            
+        searchBar.delegate = self
+        
+        filteredData = favoritesList
         tableView.reloadData()
     }
     
@@ -113,7 +124,8 @@ class FavoritesPageTableViewController: UITableViewController, UISearchBarDelega
             
             let selectedFavorite : Single_Favorite!
             selectedFavorite = nonDeletedFavorites()[indexPath.row]
-            favoriteDetail?.favoriteContent = selectedFavorite.text!
+            favoriteDetail?.favoriteContent = "Continue your conversation...\n\nType Below:\n" +
+            selectedFavorite.text!
             
             //tableView.deselectRow(at: indexPath, animated: true)
         }

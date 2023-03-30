@@ -5,7 +5,10 @@ class NewFavoriteViewController: UIViewController
 {
     @IBOutlet weak var favoritesText: UITextView!
     
+    @IBOutlet weak var favoriteLabel: UILabel!
+    
     var selectedFavorite: Single_Favorite? = nil
+    
     
     
     override func viewDidLoad()
@@ -14,6 +17,7 @@ class NewFavoriteViewController: UIViewController
         if(selectedFavorite != nil)
         {
             favoritesText.text = selectedFavorite?.text
+            favoriteLabel.text = "Edit Favorite"
         }
     }
 

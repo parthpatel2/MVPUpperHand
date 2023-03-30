@@ -17,8 +17,16 @@ class TypePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DisplayFavorite.text = favoriteContent
+        if (favoriteContent != "") {
+            DisplayFavorite.text = favoriteContent
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == DisplayFavorite {
+            DisplayFavorite.text = favoriteContent
+        }
     }
     
     /*
