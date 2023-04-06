@@ -15,6 +15,16 @@ class MainPageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "coffeeOrder")
+        {
+            let quickAccess = segue.destination as? QuickAccessVC
+            
+            quickAccess?.textView?.text = "I'd like to order\nSmall Mocha\nWith 2 pumps of Irish cream please\n\nThank you!"
+        }
+    }
+    */
+    
 
     /*
     // MARK: - Navigation

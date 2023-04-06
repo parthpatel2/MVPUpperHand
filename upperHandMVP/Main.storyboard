@@ -97,6 +97,15 @@ Matthew</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGp-ce-XfL">
+                                <rect key="frame" x="47" y="645" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <segue destination="u2e-q2-ZDy" kind="show" identifier="coffeeOrder" id="ZJ5-0t-rK2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -321,9 +330,44 @@ Matthew</string>
             </objects>
             <point key="canvasLocation" x="1881" y="-368"/>
         </scene>
+        <!--Quick AccessVC-->
+        <scene sceneID="0Oh-LX-wJr">
+            <objects>
+                <viewController id="u2e-q2-ZDy" customClass="QuickAccessVC" customModule="upperHandMVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OpA-cm-CTV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5u5-Er-qHi">
+                                <rect key="frame" x="0.0" y="108" width="375" height="302"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gju-9R-5qb">
+                                <rect key="frame" x="0.0" y="418" width="375" height="345"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="snB-hy-fXE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dIY-TN-mMJ"/>
+                    <connections>
+                        <outlet property="imageView" destination="5u5-Er-qHi" id="x9g-su-lZg"/>
+                        <outlet property="textVIew" destination="Gju-9R-5qb" id="gg2-bq-ZSl"/>
+                        <outlet property="textView" destination="Gju-9R-5qb" id="IO0-F6-Wgh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lN5-3A-A0B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18.399999999999999" y="885.96059113300498"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RVB-zB-ssE"/>
+        <segue reference="J9M-KZ-gms"/>
         <segue reference="eCV-fL-oMx"/>
     </inferredMetricsTieBreakers>
     <resources>
